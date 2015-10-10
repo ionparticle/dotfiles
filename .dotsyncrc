@@ -10,6 +10,7 @@ DOTFILES=.dotfiles
 dotsyncrc
 vim/vim
 vim/vimrc
+bash/bashrc
 [endfiles]
 
 ## hostname                     type=masterhost, ANY or NONE    files=dotfile:tolink,another:tolink
