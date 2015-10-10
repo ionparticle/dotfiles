@@ -1,0 +1,17 @@
+# Location of your dotfiles in $HOME
+DOTFILES=.dotfiles
+
+# dotfiles to symlink
+#
+# srcfile:dstfile
+# dstfile will be '.$srcfile' by default (with path removed)
+#
+[files]
+dotsyncrc
+vim/vim
+vim/vimrc
+[endfiles]
+
+## hostname                     type=masterhost, ANY or NONE    files=dotfile:tolink,another:tolink
+[hosts]
+[endhosts]
