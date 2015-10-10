@@ -10,6 +10,10 @@ printf "Check if we can use git... "
 command -v git >/dev/null 2>&1 || { echo >&2 " failed, aborting."; exit 1; }
 printf "success!\n"
 
+printf "Check if we can use vim... "
+command -v vim >/dev/null 2>&1 || { echo >&2 " failed, aborting."; exit 1; }
+printf "success!\n"
+
 cd $HOME
 if [ ! -d ".dotfiles" ]; then
 	printf "Cloning dotfiles repo... "
@@ -19,6 +23,8 @@ if [ ! -d ".dotfiles" ]; then
 	cd $DOTFILES_DIR
 	printf "Updating submodules in repo... "
 	git submodule update --init dotsync || \
+		{ echo >&2 " failed, aborting."; exit 1; }
+	git submodule update --init vim/vim/bundle/Vundle.vim/ || \
 		{ echo >&2 " failed, aborting."; exit 1; }
 	cd $HOME
 	printf "done!\n"
@@ -39,6 +45,11 @@ fi
 printf "Running dotsync: \n"
 $DOTSYNC -L || { echo >&2 "Failed, aborting."; exit 1; }
 printf "Dotsync done!\n"
+
+printf "Telling Vundle to setup all the vim plugins... "
+vim +PluginInstall +qall || { echo >&2 "Failed, aborting."; exit 1; }
+printf "done!\n"
+
 
 printf "Installing cron job for automatic dotfile updates:\n"
 # will update dotfiles everyday at 9am

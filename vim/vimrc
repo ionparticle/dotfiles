@@ -5,7 +5,7 @@
 set nocompatible
 
 
-" Vundle 
+" Vundle
 " ------
 " required while vundle loads
 filetype off
@@ -39,11 +39,11 @@ let g:airline_right_sep = ''
 " mode, only putting in the most common modes for now
 let g:airline_mode_map = {
 	\ 'n'  : 'n',
-    \ 'i'  : 'i',
-    \ 'v'  : 'v',
-    \ 'V'  : 'V',
-    \ }
-" light color scheme 
+	\ 'i'  : 'i',
+	\ 'v'  : 'v',
+	\ 'V'  : 'V',
+	\ }
+" light color scheme
 let g:airline_theme = 'light'
 
 
@@ -117,7 +117,7 @@ set tabstop=4
 " taken from http://vim.wikia.com/wiki/Faster_loading_of_large_files
 " files 10mb or larger counts as a large file
 let g:LargeFile = 1024 * 1024 * 10
-augroup LargeFile 
+augroup LargeFile
 	autocmd BufReadPre * let f=getfsize(expand("<afile>")) | if f > g:LargeFile || f == -2 | call LargeFile() | endif
 augroup END
 
