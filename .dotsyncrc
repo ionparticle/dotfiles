@@ -16,4 +16,5 @@ bash/bashrc
 ## hostname                     type=masterhost, ANY or NONE    files=dotfile:tolink,another:tolink
 [hosts]
 lianwu		git=NONE
+guava		git=NONE
 [endhosts]
