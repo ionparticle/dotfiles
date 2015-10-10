@@ -7,7 +7,6 @@ set nocompatible
 
 " Vundle 
 " ------
-
 " required while vundle loads
 filetype off
 
@@ -30,7 +29,6 @@ filetype plugin indent on
 
 " Vim-Airline
 " -----------
-
 " vim-airline specific fix for not appearing on first load
 set laststatus=2
 " vim-airline disable separator symbols, don't want them since they're
@@ -51,7 +49,6 @@ let g:airline_theme = 'light'
 
 " GUI/Terminal Customization
 " --------------------------
-
 if has('gui_running')
 	" remove toolbar
     set guioptions-=T
@@ -73,7 +70,6 @@ endif
 
 " Theme
 " -----
-
 " custom colorscheme, chosen because it looks close to fruidle and seems to
 " work well in terminal mode and in gvim
 colorscheme summerfruit256
@@ -85,7 +81,6 @@ highlight LineNr term=NONE cterm=NONE ctermfg=DarkGray ctermbg=NONE gui=NONE gui
 
 " Editing
 " -------
-
 " if no custom indent, then indent at same level as previous line
 set autoindent
 " allow backspacing over autoindents, line breaks, and start of inserts
@@ -110,7 +105,6 @@ set wrap
 
 " Tabs
 " ----
-
 " tabs are sized to 4 spaces, also prefer using actual tab characters
 set noexpandtab
 set softtabstop=4
@@ -120,7 +114,6 @@ set tabstop=4
 
 " Large Files Handling
 " --------------------
-
 " taken from http://vim.wikia.com/wiki/Faster_loading_of_large_files
 " files 10mb or larger counts as a large file
 let g:LargeFile = 1024 * 1024 * 10
