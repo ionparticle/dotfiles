@@ -13,8 +13,14 @@ printf "success!\n"
 cd $HOME
 if [ ! -d ".dotfiles" ]; then
 	printf "Cloning dotfiles repo... "
-	cd .dotfiles;
-	git clone --recursive $GIT_REPO $DOTFILES_DIR;
+	git clone $GIT_REPO $DOTFILES_DIR || \
+		{ echo >&2 " failed, aborting."; exit 1; }
+	printf "done!\n"
+	cd $DOTFILES_DIR
+	printf "Updating submodules in repo... "
+	git submodule update --init dotsync || \
+		{ echo >&2 " failed, aborting."; exit 1; }
+	cd $HOME
 	printf "done!\n"
 fi
 
