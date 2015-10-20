@@ -11,6 +11,7 @@ dotsyncrc
 vim/vim
 vim/vimrc
 bash/bashrc
+tmux/tmux.conf
 [endfiles]
 
 ## hostname                     type=masterhost, ANY or NONE    files=dotfile:tolink,another:tolink
