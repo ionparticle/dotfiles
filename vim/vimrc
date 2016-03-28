@@ -18,7 +18,8 @@ Plugin 'tpope/vim-fugitive'
 " show git diff in vim's sign column
 Plugin 'airblade/vim-gitgutter'
 " fancy status line
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 " openscad syntax highlighting
 Plugin 'sirtaj/vim-openscad'
 call vundle#end()
