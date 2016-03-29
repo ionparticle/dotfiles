@@ -1,0 +1,5 @@
+[user]
+	email = ionparticle@gmail.com
+	name = John Hsu
+[core]
+	excludesfile = .gitignore_global

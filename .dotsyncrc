@@ -7,11 +7,13 @@ DOTFILES=.dotfiles
 # dstfile will be '.$srcfile' by default (with path removed)
 #
 [files]
+bash/bashrc
 dotsyncrc
+git/gitconfig
+git/gitignore_global
+tmux/tmux.conf
 vim/vim
 vim/vimrc
-bash/bashrc
-tmux/tmux.conf
 [endfiles]
 
 ## hostname                     type=masterhost, ANY or NONE    files=dotfile:tolink,another:tolink
