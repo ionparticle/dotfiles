@@ -7,10 +7,12 @@ DOTFILES=.dotfiles
 # dstfile will be '.$srcfile' by default (with path removed)
 #
 [files]
-bash/bashrc
 dotsyncrc
+bash/bashrc
 git/gitconfig
 git/gitignore_global
+mpv/mpv.conf:.config/mpv/mpv.conf
+mpv/input.conf:.config/mpv/input.conf
 tmux/tmux.conf
 vim/vim
 vim/vimrc
