@@ -27,7 +27,6 @@ call vundle#end()
 " indentation and highlighting too
 filetype plugin indent on
 
-
 " Vim-Airline
 " -----------
 " vim-airline specific fix for not appearing on first load
@@ -46,8 +45,17 @@ let g:airline_mode_map = {
 	\ }
 " light color scheme
 let g:airline_theme = 'light'
+let g:airline#extensions#whitespace#symbol = '!'
+" certain number of spaces are allowed after tabs, but not in between
+"let g:airline#extensions#whitespace#mixed_indent_algo = 2
+" formatting of white space warning messages
+" shortened cause they were getting truncated
+let g:airline#extensions#whitespace#trailing_format = '%s tra'
+let g:airline#extensions#whitespace#mixed_indent_format = '%s mix'
+let g:airline#extensions#whitespace#long_format = '%s long'
+let g:airline#extensions#whitespace#mixed_indent_file_format = '%s mix'
 
-" vim-gitgutter 
+" vim-gitgutter
 " -------------
 "  Always enable the gitgutter, since that's taken into account when
 "  calculating the column width that gvim is displaying.
@@ -57,13 +65,13 @@ let g:gitgutter_sign_column_always = 1
 " --------------------------
 if has('gui_running')
 	" remove toolbar
-    set guioptions-=T
+	set guioptions-=T
 	" how many lines of text to show when opened, 60 lines takes up most of
 	" the vertical space on a 1080p screen
-    set lines=60
+	set lines=60
 	" set columns to account for the width of the line numbers + gitgutter
 	au BufRead,TabEnter * let &numberwidth = float2nr(log10(line("$"))) + 2
-          \| let &columns = &numberwidth + 82
+				\| let &columns = &numberwidth + 82
 else
 	" make vim use 256 color in terminal mode
 	set t_Co=256
@@ -76,9 +84,11 @@ endif
 
 " Theme
 " -----
-" custom colorscheme, chosen because it looks close to fruidle and seems to
-" work well in terminal mode and in gvim
-colorscheme summerfruit256
+" Others:
+" - jellybeans, for a dark theme
+" Don't use:
+" - summerfruit256 doesn't work well with diffs
+colorscheme fruidle
 " enable syntax highlighting
 syntax enable
 " line number colors
