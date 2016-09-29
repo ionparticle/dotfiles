@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 HOST="$(hostname)"
 GIT_REPO=https://github.com/ionparticle/dotfiles.git
@@ -6,13 +6,13 @@ DOTFILES_DIR=.dotfiles
 DOTSYNC=$HOME/$DOTFILES_DIR/dotsync/bin/dotsync
 DOTSYNCRC=$HOME/$DOTFILES_DIR/.dotsyncrc
 
-printf "Check if we can use git... "
-command -v git >/dev/null 2>&1 || { echo >&2 " failed, aborting."; exit 1; }
-printf "success!\n"
-
-printf "Check if we can use vim... "
-command -v vim >/dev/null 2>&1 || { echo >&2 " failed, aborting."; exit 1; }
-printf "success!\n"
+echo "Checking for dependencies:"
+REQUIRED_PROGRAMS=('git' 'vim' 'stow')
+for i in ${REQUIRED_PROGRAMS[@]}; do
+	printf "\t$i - "
+	command -v $i >/dev/null 2>&1 || { echo >&2 " failed, aborting."; exit 1; }
+	printf "success!\n"
+done
 
 cd $HOME
 if [ ! -d ".dotfiles" ]; then
