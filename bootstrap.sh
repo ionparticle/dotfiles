@@ -13,7 +13,7 @@ for i in ${REQUIRED_PROGRAMS[@]}; do
 done
 
 cd $HOME
-if [ ! -d ".dotfiles" ]; then
+if [ ! -d $DOTFILES_DIR ]; then
 	printf "Cloning dotfiles repo... "
 	git clone $GIT_REPO $DOTFILES_DIR || \
 		{ echo >&2 " failed, aborting."; exit 1; }
@@ -27,25 +27,13 @@ if [ ! -d ".dotfiles" ]; then
 fi
 
 # Make symlinks to the dotfiles using stow
-printf "Installing dotfiles..."
 cd $DOTFILES_DIR
-stow bash || { echo >&2 " bash failed, aborting."; exit 1; }
-stow vim || { echo >&2 " vim failed, aborting."; exit 1; }
-# need to create the screenshots dir for mpv, also makes sure that mpv config
-# dir exists
-mkdir -p ~/.config/mpv/screenshots || \
-	{ echo >&2 " mpv screenshots dir failed, aborting."; exit 1; }
-stow -t ~/.config/mpv/ mpv || { echo >&2 " mpv failed, aborting."; exit 1; }
-stow git || { echo >&2 " git failed, aborting."; exit 1; }
-echo " success!"
+./stow.sh
 
-exit
-
+# Setup vim plugins
 printf "Telling Vundle to setup all the vim plugins... "
 vim +PluginInstall +qall || { echo >&2 "Failed, aborting."; exit 1; }
 printf "done!\n"
-
-
 
 # For reference installing a cron job, need to remove dotsync part
 #printf "Installing cron job for automatic dotfile updates:\n"
