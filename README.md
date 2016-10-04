@@ -8,6 +8,8 @@ chmod +x bootstrap.sh; \
 ./bootstrap.sh
 ```
 
-Auto-update doesn't include Vundle managed vim plugins or dotsync. Not sure how to handle those yet.
+Auto-update doesn't include Vundle managed vim plugins. Not sure how to handle those yet.
 
-Using [dotsync](https://github.com/dotphiles/dotsync) for dotfile syncing. Not using the remote syncing part, I'm just using cron jobs to have each machine update themselves.
+Auto-update not working right now.
+
+t-mux config not being used right now.
