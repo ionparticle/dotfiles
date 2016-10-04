@@ -8,8 +8,6 @@ chmod +x bootstrap.sh; \
 ./bootstrap.sh
 ```
 
-Auto-update doesn't include Vundle managed vim plugins. Not sure how to handle those yet.
-
-Auto-update not working right now.
+Auto-update only does a git pull and stow.
 
 t-mux config not being used right now.

@@ -20,7 +20,7 @@ if [ ! -d $DOTFILES_DIR ]; then
 	printf "done!\n"
 	cd $DOTFILES_DIR
 	printf "Updating submodules in repo... "
-	git submodule update --init vim/vim/bundle/Vundle.vim/ || \
+	git submodule update --init vim/.vim/bundle/Vundle.vim/ || \
 		{ echo >&2 " failed, aborting."; exit 1; }
 	cd $HOME
 	printf "done!\n"
@@ -36,9 +36,9 @@ vim +PluginInstall +qall || { echo >&2 "Failed, aborting."; exit 1; }
 printf "done!\n"
 
 # For reference installing a cron job, need to remove dotsync part
-#printf "Installing cron job for automatic dotfile updates:\n"
+printf "Installing cron job for automatic dotfile updates..."
 # will update dotfiles everyday at 9am
-#(crontab -l | grep -v dotsync; echo "0 9 * * 7 $DOTSYNC -u") | crontab - || \
-#	{ echo >&2 "Failed, aborting."; exit 1;}
-
-printf "Done!\n"
+(crontab -l | grep -v $DOTFILES_DIR; echo \
+	"0 9 * * * cd $HOME/$DOTFILES_DIR;git pull;./stow.sh") | crontab - || \
+	{ echo >&2 " failed, aborting."; exit 1;}
+echo " success!"
