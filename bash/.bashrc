@@ -8,8 +8,11 @@ case $- in
 	*) return;;
 esac
 
-# allows sync between multiple concurrent bash instances
-PROMPT_COMMAND='history -a; history -c; history -r'
+# Append each command to history. Deliberately avoiding updating our history
+# with other bash instances. I got used to each shell having their own history,
+# so it actually disrupted my workflow when they updated with each other.
+PROMPT_COMMAND='history -a;'
+# NOTE: can always 'history -c; history -r' to enable concurrent updates
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
