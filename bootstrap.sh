@@ -3,6 +3,7 @@
 HOST="$(hostname)"
 GIT_REPO=https://github.com/ionparticle/dotfiles.git
 DOTFILES_DIR=.dotfiles
+VUNDLE_DIR=vim/.vim/bundle/Vundle.vim
 
 echo "Checking for dependencies:"
 REQUIRED_PROGRAMS=('git' 'vim' 'stow')
@@ -18,13 +19,16 @@ if [ ! -d $DOTFILES_DIR ]; then
 	git clone $GIT_REPO $DOTFILES_DIR || \
 		{ echo >&2 " failed, aborting."; exit 1; }
 	printf "done!\n"
-	cd $DOTFILES_DIR
-	printf "Updating submodules in repo... "
+fi
+
+cd $DOTFILES_DIR
+if [ ! -d $VUNDLE_DIR ]; then
+	printf "Pulling vundle in as a submodule in repo... "
 	git submodule update --init vim/.vim/bundle/Vundle.vim/ || \
 		{ echo >&2 " failed, aborting."; exit 1; }
-	cd $HOME
 	printf "done!\n"
 fi
+cd $HOME
 
 # Make symlinks to the dotfiles using stow
 cd $DOTFILES_DIR
