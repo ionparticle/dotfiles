@@ -22,7 +22,7 @@ if [ ! -d $DOTFILES_DIR ]; then
 fi
 
 cd $DOTFILES_DIR
-if [ ! -d $VUNDLE_DIR ]; then
+if [ ! "$(ls -A $VUNDLE_DIR)" ]; then
 	printf "Pulling vundle in as a submodule in repo... "
 	git submodule update --init vim/.vim/bundle/Vundle.vim/ || \
 		{ echo >&2 " failed, aborting."; exit 1; }
