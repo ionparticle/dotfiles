@@ -39,7 +39,6 @@ printf "Telling Vundle to setup all the vim plugins... "
 vim +PluginInstall +qall || { echo >&2 "Failed, aborting."; exit 1; }
 printf "done!\n"
 
-# For reference installing a cron job, need to remove dotsync part
 printf "Installing cron job for automatic dotfile updates..."
 # will update dotfiles everyday at 9am
 (crontab -l | grep -v $DOTFILES_DIR; echo \
