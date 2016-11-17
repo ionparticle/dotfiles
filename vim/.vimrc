@@ -22,9 +22,10 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 " openscad syntax highlighting
 Plugin 'sirtaj/vim-openscad'
+" coffeescript syntax highlighting
+Plugin 'kchmck/vim-coffee-script'
 " eco templating syntax highlighting
-Plugin 'kchmck/vim-coffee-script' " Dependency
-Plugin 'AndrewRadev/vim-eco'
+Plugin 'AndrewRadev/vim-eco' " depends on coffeescript syntax highlighting
 call vundle#end()
 " restore filetype detection after vundle loads, this enables file type based
 " indentation and highlighting too
