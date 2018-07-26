@@ -63,7 +63,11 @@ let g:airline#extensions#whitespace#mixed_indent_file_format = '%s mix'
 " -------------
 "  Always enable the gitgutter, since that's taken into account when
 "  calculating the column width that gvim is displaying.
-let g:gitgutter_sign_column_always = 1
+if exists('&signcolumn')  " Vim 7.4.2201
+  set signcolumn=yes
+else
+  let g:gitgutter_sign_column_always = 1
+endif
 
 " GUI/Terminal Customization
 " --------------------------
