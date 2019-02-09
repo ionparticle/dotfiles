@@ -11,9 +11,9 @@ set nocompatible
 
 " Auto install vim-plug if needed, I do miss vundle's self updater
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+		\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 " Specify a directory for plugins
@@ -81,9 +81,9 @@ let g:airline#extensions#ale#enabled = 1
 "  Always enable the gitgutter, since that's taken into account when
 "  calculating the column width that gvim is displaying.
 if exists('&signcolumn')  " Vim 7.4.2201
-  set signcolumn=yes
+	set signcolumn=yes
 else
-  let g:gitgutter_sign_column_always = 1
+	let g:gitgutter_sign_column_always = 1
 endif
 
 " GUI/Terminal Customization
@@ -172,8 +172,10 @@ endfunction
 
 " Enable ALE
 let g:ale_linters = {
-\   'javascript': ['standard'],
+	\ 'javascript': ['eslint'],
+	\ 'html': ['tidy']
 \}
-let g:ale_fixers = {'javascript': ['standard']}
+" let g:ale_fixers = {'javascript': ['standard']}
 let g:ale_lint_on_save = 1
-let g:ale_fix_on_save = 1
+" not trusting automatic fixes
+let g:ale_fix_on_save = 0
