@@ -4,36 +4,47 @@
 " disable vi compatibility
 set nocompatible
 
-
-" Vundle
+" Vim-Plug - Plugin Manager
 " ------
-" required while vundle loads
-filetype off
+" Switching from Vundle for plugin management as it's encountering maintenance
+" issues, vim-plug is very similar.
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
+" Auto install vim-plug if needed, I do miss vundle's self updater
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" Specify a directory for plugins
+" - For Neovim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
+
 " for git integration in vim-airline
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 " show git diff in vim's sign column
-Plugin 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 " fancy status line
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " openscad syntax highlighting
-Plugin 'sirtaj/vim-openscad'
+Plug 'sirtaj/vim-openscad'
 " coffeescript syntax highlighting
-Plugin 'kchmck/vim-coffee-script'
+Plug 'kchmck/vim-coffee-script'
 " eco templating syntax highlighting
-Plugin 'AndrewRadev/vim-eco' " depends on coffeescript syntax highlighting
+Plug 'AndrewRadev/vim-eco' " depends on coffeescript syntax highlighting
 " vue component syntax highlighting
-Plugin 'posva/vim-vue'
+Plug 'posva/vim-vue'
 " linter
-Plugin 'w0rp/ale'
-call vundle#end()
-" restore filetype detection after vundle loads, this enables file type based
-" indentation and highlighting too
-filetype plugin indent on
+Plug 'w0rp/ale'
+
+" Initialize plugin system
+call plug#end()
+
+" Commented out to note that both lines following are enabled by vim-plug
+"filetype plugin indent on " enable filetype detection for indent/highlighting
+"syntax enable " enable syntax highlighting
 
 " Vim-Airline
 " -----------
@@ -103,8 +114,6 @@ endif
 " Don't use:
 " - summerfruit256 doesn't work well with diffs
 colorscheme one
-" enable syntax highlighting
-syntax enable
 " line number colors
 highlight LineNr term=NONE cterm=NONE ctermfg=DarkGray ctermbg=NONE gui=NONE guifg=DarkGray guibg=NONE
 
