@@ -3,3 +3,5 @@
 	name = John Hsu
 [core]
 	excludesfile = ~/.gitignore_global
+[push]
+	default = matching

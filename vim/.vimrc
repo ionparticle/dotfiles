@@ -26,6 +26,10 @@ Plugin 'sirtaj/vim-openscad'
 Plugin 'kchmck/vim-coffee-script'
 " eco templating syntax highlighting
 Plugin 'AndrewRadev/vim-eco' " depends on coffeescript syntax highlighting
+" vue component syntax highlighting
+Plugin 'posva/vim-vue'
+" linter
+Plugin 'w0rp/ale'
 call vundle#end()
 " restore filetype detection after vundle loads, this enables file type based
 " indentation and highlighting too
@@ -58,6 +62,8 @@ let g:airline#extensions#whitespace#trailing_format = '%s tra'
 let g:airline#extensions#whitespace#mixed_indent_format = '%s mix'
 let g:airline#extensions#whitespace#long_format = '%s long'
 let g:airline#extensions#whitespace#mixed_indent_file_format = '%s mix'
+" show ALE linter warnings in statusline
+let g:airline#extensions#ale#enabled = 1
 
 " vim-gitgutter
 " -------------
@@ -76,10 +82,10 @@ if has('gui_running')
 	set guioptions-=T
 	" how many lines of text to show when opened, 60 lines takes up most of
 	" the vertical space on a 1080p screen
-	set lines=60
+	set lines=59
 	" set columns to account for the width of the line numbers + gitgutter
 	au BufRead,TabEnter * let &numberwidth = float2nr(log10(line("$"))) + 2
-				\| let &columns = &numberwidth + 82
+				\| let &columns = &numberwidth + 84
 else
 	" make vim use 256 color in terminal mode
 	set t_Co=256
@@ -96,7 +102,7 @@ endif
 " - jellybeans, for a dark theme
 " Don't use:
 " - summerfruit256 doesn't work well with diffs
-colorscheme fruidle
+colorscheme one
 " enable syntax highlighting
 syntax enable
 " line number colors
@@ -130,7 +136,7 @@ set wrap
 " Tabs
 " ----
 " tabs are sized to 4 spaces, also prefer using actual tab characters
-set noexpandtab
+"set noexpandtab
 set softtabstop=4
 set shiftwidth=4
 set tabstop=4
@@ -153,3 +159,12 @@ function LargeFile()
 	" disable vim-gitgutter
 	GitGutterDisable
 endfunction
+
+
+" Enable ALE
+let g:ale_linters = {
+\   'javascript': ['standard'],
+\}
+let g:ale_fixers = {'javascript': ['standard']}
+let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
