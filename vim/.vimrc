@@ -21,23 +21,29 @@ endif
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
+" linter
+Plug 'w0rp/ale'
+
+" checks if plugins are outdated, displays a message below the status bar
+Plug 'semanser/vim-outdated-plugins'
+
+"""""""" Vim Airline """"""""
 " for git integration in vim-airline
 Plug 'tpope/vim-fugitive'
 " show git diff in vim's sign column
 Plug 'airblade/vim-gitgutter'
+
 " fancy status line
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+"""""""" Syntax Highlighting """"""""
+" python requirement files, on-demand loading specified by 'for'
+Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 " openscad syntax highlighting
-Plug 'sirtaj/vim-openscad'
-" coffeescript syntax highlighting
-Plug 'kchmck/vim-coffee-script'
-" eco templating syntax highlighting
-Plug 'AndrewRadev/vim-eco' " depends on coffeescript syntax highlighting
+Plug 'sirtaj/vim-openscad', {'for': 'openscad'}
 " vue component syntax highlighting
-Plug 'posva/vim-vue'
-" linter
-Plug 'w0rp/ale'
+Plug 'posva/vim-vue', {'for': 'vue'}
 
 " Initialize plugin system
 call plug#end()
