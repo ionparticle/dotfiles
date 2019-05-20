@@ -45,6 +45,10 @@ Plug 'sirtaj/vim-openscad', {'for': 'openscad'}
 " vue component syntax highlighting
 Plug 'posva/vim-vue', {'for': 'vue'}
 
+"""""""" Indentation """"""""
+" fix multi-line indent inside brackets defaulting to 2 levels, would prefer 1
+Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
+
 " Initialize plugin system
 call plug#end()
 
