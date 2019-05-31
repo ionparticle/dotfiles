@@ -38,10 +38,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 """""""" Syntax Highlighting """"""""
-" python requirement files, on-demand loading specified by 'for'
-Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 " openscad syntax highlighting
 Plug 'sirtaj/vim-openscad', {'for': 'openscad'}
+" python requirement files, on-demand loading specified by 'for'
+Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 " vue component syntax highlighting
 Plug 'posva/vim-vue', {'for': 'vue'}
 
@@ -183,9 +183,15 @@ endfunction
 " Enable ALE
 let g:ale_linters = {
 	\ 'javascript': ['eslint'],
-	\ 'html': ['tidy']
+	\ 'html': ['tidy'],
+	\ 'python': ['flake8']
 \}
 " let g:ale_fixers = {'javascript': ['standard']}
 let g:ale_lint_on_save = 1
 " not trusting automatic fixes
 let g:ale_fix_on_save = 0
+" disable flake8 errors
+" E2 whitespace issues (not including indents)
+" E302 expect 2 blank lines after defs
+" E501 line too long
+let g:ale_python_flake8_options = '--extend-ignore=E2,E302,E501'
