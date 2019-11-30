@@ -44,6 +44,8 @@ Plug 'sirtaj/vim-openscad', {'for': 'openscad'}
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 " vue component syntax highlighting
 Plug 'posva/vim-vue', {'for': 'vue'}
+" laravel blade templates
+Plug 'jwalton512/vim-blade'
 
 """""""" Indentation """"""""
 " fix multi-line indent inside brackets defaulting to 2 levels, would prefer 1
@@ -194,4 +196,4 @@ let g:ale_fix_on_save = 0
 " E2 whitespace issues (not including indents)
 " E302 expect 2 blank lines after defs
 " E501 line too long
-let g:ale_python_flake8_options = '--extend-ignore=E2,E302,E501'
+let g:ale_python_flake8_options = '--extend-ignore=E2,E501'

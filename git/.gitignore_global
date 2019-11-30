@@ -25,3 +25,7 @@ Session.vim
 tags
 # Persistent undo
 [._]*.un~
+
+# 'git diff' files I generate
+log
+diff
