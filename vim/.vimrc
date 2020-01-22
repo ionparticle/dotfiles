@@ -186,7 +186,8 @@ endfunction
 let g:ale_linters = {
 	\ 'javascript': ['eslint'],
 	\ 'html': ['tidy'],
-	\ 'python': ['flake8']
+	\ 'python': ['flake8'],
+	\ 'php': ['phpmd']
 \}
 " let g:ale_fixers = {'javascript': ['standard']}
 let g:ale_lint_on_save = 1
