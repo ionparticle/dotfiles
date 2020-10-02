@@ -51,6 +51,13 @@ Plug 'jwalton512/vim-blade'
 " fix multi-line indent inside brackets defaulting to 2 levels, would prefer 1
 Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
 
+"""""""" Colorscheme """"""""
+" customized vim-one
+Plug 'ionparticle/vim-one'
+" Plug 'rakr/vim-one'
+" Plug 'caglartoklu/bridle.vim'
+" Plug 'ku-s-h/summerfruit256.vim'
+
 " Initialize plugin system
 call plug#end()
 
@@ -90,8 +97,7 @@ let g:airline#extensions#ale#enabled = 1
 
 " vim-gitgutter
 " -------------
-"  Always enable the gitgutter, since that's taken into account when
-"  calculating the column width that gvim is displaying.
+"  Always enable the gitgutter
 if exists('&signcolumn')  " Vim 7.4.2201
 	set signcolumn=yes
 else
@@ -106,9 +112,11 @@ if has('gui_running')
 	" how many lines of text to show when opened, 60 lines takes up most of
 	" the vertical space on a 1080p screen
 	set lines=59
-	" set columns to account for the width of the line numbers + gitgutter
-	au BufRead,TabEnter * let &numberwidth = float2nr(log10(line("$"))) + 2
-				\| let &columns = &numberwidth + 84
+	" set columns, used to have a dynamic column size that calculates how
+	" large the gutter ends up being, but there's some annoying edge cases
+	" that it didn't handle, and most of the time, it ends up being around 90
+	" anyways so might as well just use the static value
+	set columns=90
 else
 	" make vim use 256 color in terminal mode
 	set t_Co=256
@@ -121,14 +129,15 @@ endif
 
 " Theme
 " -----
-" Others:
-" - jellybeans, for a dark theme
-" Don't use:
-" - summerfruit256 doesn't work well with diffs
-colorscheme one
-" line number colors
-highlight LineNr term=NONE cterm=NONE ctermfg=DarkGray ctermbg=NONE gui=NONE guifg=DarkGray guibg=NONE
+"  Enable true color support, from vim-one readme
+if (empty($TMUX))
+	if (has("termguicolors"))
+		set termguicolors
+	endif
+endif
 
+colorscheme one
+set background=light
 
 " Editing
 " -------
