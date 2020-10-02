@@ -161,12 +161,14 @@ set shortmess+=filmnrxoOtT
 set textwidth=0
 " screen wrap long lines
 set wrap
+" highlight the column 80
+set colorcolumn=80
 
 
-" Tabs
+" Indents
 " ----
-" tabs are sized to 4 spaces, also prefer using actual tab characters
-"set noexpandtab
+" I give up, the spaces people are right, use spaces for indents
+set expandtab
 set softtabstop=4
 set shiftwidth=4
 set tabstop=4
