@@ -118,8 +118,6 @@ if has('gui_running')
 	" anyways so might as well just use the static value
 	set columns=90
 else
-	" make vim use 256 color in terminal mode
-	set t_Co=256
 	" defer redraws till after command completed, should improve speed
 	set lazyredraw
 	" indicate fast terminal connection, should improve redraw smoothness
