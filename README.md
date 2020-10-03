@@ -9,5 +9,3 @@ chmod +x bootstrap.sh; \
 ```
 
 Auto-update only does a git pull and stow.
-
-t-mux config not being used right now.
