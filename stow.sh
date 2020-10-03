@@ -2,6 +2,7 @@
 printf "Installing dotfiles..."
 stow bash || { echo >&2 " bash failed, aborting."; exit 1; }
 stow vim || { echo >&2 " vim failed, aborting."; exit 1; }
+stow tmux || { echo >&2 " tmux failed, aborting."; exit 1; }
 # need to create the screenshots dir for mpv, also makes sure that mpv config
 # dir exists
 mkdir -p ~/.config/mpv/screenshots || \
