@@ -210,3 +210,4 @@ let g:ale_fix_on_save = 0
 " E302 expect 2 blank lines after defs
 " E501 line too long
 let g:ale_python_flake8_options = '--extend-ignore=E2,E501'
+let g:ale_php_phpmd_ruleset = '~/.vim/myphpmd.xml'
