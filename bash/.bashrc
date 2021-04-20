@@ -126,3 +126,7 @@ if ! shopt -oq posix; then
 		. /etc/bash_completion
 	fi
 fi
+
+if [ -f ~/.local/bin/vault ]; then
+    complete -C ~/.local/bin/vault vault
+fi
