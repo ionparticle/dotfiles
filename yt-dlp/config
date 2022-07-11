@@ -1,0 +1,23 @@
+# base options for yt-dlp for downloading any video
+# avoids creating addition files beyond the video file
+
+# === Metadata ===
+# video description and such
+
+# embed infojson(ch title/desc/etc) and chapters into the video metadata
+--embed-metadata
+
+# === Subtitles ===
+
+# embed the subtitles into the media file
+--embed-subs
+
+# download the english (wildcard) subs and the live chat. Live chat will be
+# downloaded as a separate json sub file
+--sub-langs en.*
+
+# === Thumbnail ===
+
+# embed thumbnail in video, note that this seems to force mkv container
+--embed-thumbnail
+

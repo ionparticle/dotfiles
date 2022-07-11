@@ -8,5 +8,11 @@ stow tmux || { echo >&2 " tmux failed, aborting."; exit 1; }
 mkdir -p ~/.config/mpv/screenshots || \
 	{ echo >&2 " mpv screenshots dir failed, aborting."; exit 1; }
 stow -t ~/.config/mpv/ mpv || { echo >&2 " mpv failed, aborting."; exit 1; }
+
+mkdir -p ~/.config/yt-dlp || \
+	{ echo >&2 " yt-dlp dir failed, aborting."; exit 1; }
+stow -t ~/.config/yt-dlp/ yt-dlp || \
+    { echo >&2 " yt-dlp failed, aborting."; exit 1; }
+
 stow git || { echo >&2 " git failed, aborting."; exit 1; }
 echo " success!"
