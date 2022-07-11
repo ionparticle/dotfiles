@@ -1,0 +1,39 @@
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a
+# device; this may be used with UUID= as a more robust way to name devices
+# that works even if disks are added and removed. See fstab(5).
+#
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+# / was on /dev/nvme0n1p2 during installation
+UUID=78727a56-cb20-45f1-8488-944db8cb6dca /               ext4    errors=remount-ro 0       1
+# /boot/efi was on /dev/nvme0n1p1 during installation
+UUID=1473-D241  /boot/efi       vfat    umask=0077      0       1
+# /home was on /dev/nvme0n1p4 during installation
+UUID=81f5c157-6312-4396-9208-54a20af93aed /home           ext4    defaults        0       2
+# swap was on /dev/nvme0n1p3 during installation
+UUID=363c5b72-f4e0-4a9f-b3e1-b1a549dd0f55 none            swap    sw              0       0
+
+# snapraid mounts
+# the nofail option prevents errors from being reported at boot if the device is missing
+# nofail should be combined with x-systemd.device-timeout=5 to keep the timeout down from
+# the default 90 seconds, this is especially useful for external drives
+LABEL=WDRed_8TB1      /mnt/parity1  ext4  defaults,nofail 0 0
+LABEL=Toshiba_8TB1    /mnt/parity2  ext4  defaults,nofail 0 0
+LABEL=WDRed_8TB2      /mnt/parity3  ext4  defaults,nofail 0 0
+LABEL=HGST_4TB1       /mnt/data1    ext4  defaults,nofail 0 0
+LABEL=HGST_4TB3       /mnt/data2    ext4  defaults,nofail 0 0
+LABEL=WDRed_2TB1      /mnt/data3    ext4  defaults,nofail 0 0
+#LABEL=Seagate_4TB1    /mnt/data4    ext4  defaults,nofail 0 0 # died
+LABEL=HGST_4TB2       /mnt/data5    ext4  defaults,nofail 0 0
+LABEL=Seagate_6TB1    /mnt/data6    ext4  defaults,nofail 0 0
+LABEL=HGST_6TB1       /mnt/data4    ext4  defaults,nofail 0 0
+# default policy for category.create is epmfs, which if an existing directory
+# is found, it'll ONLY create files in that directory. This causes issues when
+# the drive where the directory lives is out of space as it will NOT create a
+# directory on another drive that does have space. For some reason, the sane
+# and obvious solution of epmfs just creating the damn directory without
+# human intervention isn't an option. They suggest you use mfs, which doesn't
+# require existing directories on create.
+/mnt/data1:/mnt/data2:/mnt/data3:/mnt/data4:/mnt/data5:/mnt/data6  /mnt/data  fuse.mergerfs  defaults,allow_other,use_ino,hard_remove,moveonenospc=true,minfreespace=10G,fsname=datamergerfs,category.create=mfs  0       0
+#mhddfs#/mnt/data1,/mnt/data2,/mnt/data3,/mnt/data4 /mnt/data fuse defaults,allow_other 0 0
