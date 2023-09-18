@@ -22,8 +22,10 @@ CAD_PACKAGES=('freecad' 'openscad')
 GAMING_PACKAGES=('steam')
 INTERNET_PACKAGES=('filezilla')
 # hddtemp gets pulled in but needs workaround: sudo chmod +s /usr/sbin/hddtemp
-SENSOR_PACKAGES=('xfce4-sensors-plugin' 'xfce4-systemload-plugin' 'xfce4-netload-plugin' 'xsensors' 'smartmontools')
-TOOL_PACKAGES=('byobu' 'aptitude')
+SENSOR_PACKAGES=('xfce4-sensors-plugin' 'xfce4-systemload-plugin' 'xfce4-netload-plugin' 'xsensors' 'smartmontools' 'rasdaemon')
+# arandr - gui xrandr client, can be used to generate script to configure displays
+# btop - top with more features, can use mouse
+TOOL_PACKAGES=('byobu' 'aptitude' 'arandr' 'btop')
 
 # Manual
 # NoiseTorch - real-time microphone noise suppression
@@ -92,3 +94,9 @@ xfconf-query --channel thunar --property /misc-full-path-in-title  --create --ty
 # get access denied when trying to access the usb to serial port /dev/ttyACM0
 echo "add user to dialout group"
 sudo adduser john dialout
+
+echo "---- ENABLE RASDAEMON FOR ECC MONITOR ----"
+# see: https://www.setphaserstostun.org/posts/monitoring-ecc-memory-on-linux-with-rasdaemon/
+# rasdaemon checks if ECC RAM actually did stuff, get stats using:
+# sudo ras-mc-ctl --error-count
+sudo systemctl enable rasdaemon
