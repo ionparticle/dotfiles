@@ -26,6 +26,8 @@ SENSOR_PACKAGES=('xfce4-sensors-plugin' 'xfce4-systemload-plugin' 'xfce4-netload
 # arandr - gui xrandr client, can be used to generate script to configure displays
 # btop - top with more features, can use mouse
 TOOL_PACKAGES=('byobu' 'aptitude' 'arandr' 'btop')
+# TODO dev machine needs these
+DEV_PACKAGES=('pipenv')
 
 # Manual
 # NoiseTorch - real-time microphone noise suppression
@@ -33,6 +35,11 @@ TOOL_PACKAGES=('byobu' 'aptitude' 'arandr' 'btop')
 # Samba - copy smb.conf
 # setup samba share user password
 # sudo smbpasswd -a john
+# docker install from docker deb repo
+# add user to docker group
+# docker post-install needs to setup rootless
+# docker rootless access to ports <1024 requires CAP_NET_BIND_SERVICE
+# remember to disable root docker service
 
 installPackages() {
     packages=("$@")
