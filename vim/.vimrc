@@ -46,6 +46,8 @@ Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 Plug 'posva/vim-vue', {'for': 'vue'}
 " laravel blade templates
 Plug 'jwalton512/vim-blade'
+" Mojolicious embedded perl html templates
+Plug 'yko/mojo.vim'
 
 """""""" Indentation """"""""
 " fix multi-line indent inside brackets defaulting to 2 levels, would prefer 1
