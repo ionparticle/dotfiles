@@ -18,7 +18,7 @@ ARCHIVER_PACKAGES=('xarchiver' 'thunar-archive-plugin' 'p7zip-full' 'p7zip-rar')
 # viewnior - image viewer
 # evince - pdf viewer
 MEDIA_PACKAGES=('gimp' 'mcomix' 'mpv' 'viewnior' 'evince' 'mkvtoolnix')
-CAD_PACKAGES=('freecad' 'openscad')
+CAD_PACKAGES=('openscad')
 GAMING_PACKAGES=('steam')
 INTERNET_PACKAGES=('filezilla')
 # hddtemp gets pulled in but needs workaround: sudo chmod +s /usr/sbin/hddtemp
