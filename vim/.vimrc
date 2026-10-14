@@ -48,10 +48,18 @@ Plug 'posva/vim-vue', {'for': 'vue'}
 Plug 'jwalton512/vim-blade'
 " Mojolicious embedded perl html templates
 Plug 'yko/mojo.vim'
+" Jinja templates (for Ansible)
+"Plug 'lepture/vim-jinja' " conflicts with ftdetect/django.vim
+" Helm templates
+Plug 'towolf/vim-helm'
+" Caddy config "
+Plug 'isobit/vim-caddyfile'
 
 """""""" Indentation """"""""
 " fix multi-line indent inside brackets defaulting to 2 levels, would prefer 1
 Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
+" follow .editorconfig rules
+Plug 'editorconfig/editorconfig-vim'
 
 """""""" Colorscheme """"""""
 " customized vim-one
